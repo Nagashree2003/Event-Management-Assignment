@@ -1,0 +1,71 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="py-16 bg-gradient-to-b from-gray-100 to-blue-50" style="background-image: url('https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png'); background-size: cover; background-position: center;">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="flex bg-gradient-to-r from-blue-400 via-blue-300 to-blue-100 rounded-lg shadow-2xl overflow-hidden mx-auto max-w-lg lg:max-w-4xl transform hover:scale-105 transition-all duration-500">
+            <div class="hidden lg:block lg:w-1/2 bg-cover"
+                style="background-image:url('https://aaftonline.com/blog/wp-content/uploads/2023/03/Untitled-design-23.jpg'); background-size: cover; background-position: center;">
+            </div>
+            <div class="w-full p-8 lg:w-1/2 bg-white shadow-xl rounded-lg transform hover:scale-105 transition-all duration-500">
+                <h2 class="text-3xl font-bold text-center text-blac-600 mb-4">Welcome to Event Management Dashboard!</h2>
+                <p class="text-lg text-gray-700 text-center mb-4">Manage your events seamlessly with our user-friendly platform</p>
+                <p class="text-md text-gray-500 text-center mb-8">
+                    Created By <a href="https://www.linkedin.com/in/nagashree-p-b96500256/" class="text-blue-500 font-semibold hover:underline">Nagashree P</a>
+                </p>
+
+                <!-- Google Sign-in button with hover effect -->
+                <a href="#" class="flex items-center justify-center mt-4 text-white bg-blue-500 hover:bg-blue-600 rounded-lg shadow-md p-3 transition duration-300 ease-in-out transform hover:scale-105" aria-label="Sign in with Google" onclick="alert('Sign in with Google feature will be implemented in the future!')">
+                    <div class="px-4 py-3">
+                        <svg class="h-6 w-6" viewBox="0 0 40 40">
+                            <!-- SVG path for Google Icon -->
+                        </svg>
+                    </div>
+                    <h1 class="px-4 py-3 w-5/6 text-center text-gray-200 font-bold">Sign in with Google</h1>
+                </a>
+
+                <div class="mt-6 flex items-center justify-between">
+                    <span class="border-b w-1/5 lg:w-1/4"></span>
+                    <a href="#" class="text-xs text-center text-gray-500 uppercase">or login with email</a>
+                    <span class="border-b w-1/5 lg:w-1/4"></span>
+                </div>
+
+                <!-- Username field -->
+                <div class="mt-6">
+                    <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                    <input id="username" class="bg-gray-200 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 border border-gray-300 rounded py-2 px-4 block w-full appearance-none transition duration-200 ease-in-out transform hover:scale-105" type="text" name="Username" aria-label="Username" required />
+                    {% if form.username.errors %}
+                        <div class="text-red-500 text-xs mt-1">
+                            {% for error in form.username.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Password field -->
+                <div class="mt-6">
+                    <div class="flex justify-between">
+                        <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                        <a href="#" class="text-xs text-gray-500 hover:text-blue-500" onclick="alert('Forgot Password feature will be implemented in the future!')">Forgot Password?</a>
+                    </div>
+                    <input id="password" class="bg-gray-200 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 border border-gray-300 rounded py-2 px-4 block w-full appearance-none transition duration-200 ease-in-out transform hover:scale-105" type="password" name="Password" aria-label="Password" required />
+                    {% if form.password.errors %}
+                        <div class="text-red-500 text-xs mt-1">
+                            {% for error in form.password.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Submit button -->
+                <div class="mt-8">
+                    <button class="bg-blue-600 text-white font-bold py-2 px-4 w-full rounded hover:bg-blue-500 transition duration-200 ease-in-out transform hover:scale-105" type="submit" aria-label="Login">Login</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

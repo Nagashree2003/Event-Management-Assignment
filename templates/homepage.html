@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="bg-blue-100 py-8"> <!-- Added light blue background -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Card 1 -->
+    {% for event in events %}
+    <div
+      class="block max-w-[20rem] rounded-lg bg-blue-500 text-black shadow-secondary-1 dark:bg-gray-800 dark:text-gray-200"
+    >
+      <div class="relative overflow-hidden bg-cover bg-no-repeat">
+        <!-- Use the provided image URL -->
+        <a href="https://ibb.co/BgVWnyp">
+          <img class="rounded-t-lg" src="https://www.kreativdistrikt.com/wp-content/uploads/2024/02/The-Art-of-Successful-Hackathon-Management.webp" alt="1198" border="0" />
+        </a>
+      </div>
+      <div class="p-6">
+        <h5 class="mb-2 text-xl font-medium leading-tight dark:text-white" style="text-align: center; font-weight: bold;">{{ event.name }}</h5>
+        <p class="text-base dark:text-gray-300">{{ event.description }}</p>
+      </div>
+      <ul class="w-full">
+        <li class="w-full border-b-2 border-neutral-100 border-opacity-100 px-6 py-3 dark:border-gray-600 dark:text-gray-300">
+          <strong>Date:</strong> {{ event.date }}
+        </li>
+        <li class="w-full border-b-2 border-neutral-100 border-opacity-100 px-6 py-3 dark:border-gray-600 dark:text-gray-300">
+          <strong>Location:</strong> {{ event.location }}
+        </li>
+      </ul>
+      <div class="p-6">
+        <a href="{% url 'update_event' event_id=event.id %}">
+          <button
+            class="rounded-md bg-gradient-to-tr from-slate-800 to-slate-700 py-2 px-4 text-sm text-white shadow-md hover:shadow-lg dark:from-gray-700 dark:to-gray-600 dark:hover:bg-gray-500"
+            type="button"
+          >
+            Update
+          </button>
+        </a>
+        <a href="{% url 'delete_event' event.id %}">
+          <button
+            class="rounded-md bg-gradient-to-tr from-slate-800 to-slate-700 py-2 px-4 text-sm text-white shadow-md hover:shadow-lg dark:from-gray-700 dark:to-gray-600 dark:hover:bg-gray-500"
+            type="button"
+          >
+            Delete
+          </button>
+        </a>
+        <a href="{% url 'event_task_list' event.id %}">
+          <button
+            class="rounded-md bg-gradient-to-tr from-slate-800 to-slate-700 py-2 px-4 text-sm text-white shadow-md hover:shadow-lg dark:from-gray-700 dark:to-gray-600 dark:hover:bg-gray-500"
+            type="button"
+          >
+            View Task
+          </button>
+        </a>
+        <a href="{% url 'attendee_list' event.id %}">
+          <button
+            class="rounded-md bg-gradient-to-tr from-slate-800 to-slate-700 py-2 px-4 text-sm text-white shadow-md hover:shadow-lg dark:from-gray-700 dark:to-gray-600 dark:hover:bg-gray-500"
+            type="button"
+          >
+            View Attendee
+          </button>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
